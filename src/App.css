@@ -1,0 +1,602 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#f4f7fb;
+    color:#111827;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    width:100%;
+    height:85px;
+
+    background:white;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 70px;
+
+    box-shadow:0 2px 20px rgba(0,0,0,0.06);
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:700;
+    color:#2563eb;
+    letter-spacing:1px;
+}
+
+.navbar div{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-links{
+    text-decoration:none;
+    color:#374151;
+
+    font-size:16px;
+    font-weight:500;
+
+    transition:0.3s;
+    position:relative;
+}
+
+.nav-links::after{
+    content:'';
+    position:absolute;
+
+    left:0;
+    bottom:-6px;
+
+    width:0%;
+    height:2px;
+
+    background:#2563eb;
+
+    transition:0.3s;
+}
+
+.nav-links:hover::after{
+    width:100%;
+}
+
+.nav-links:hover{
+    color:#2563eb;
+}
+
+.logout-btn{
+    padding:12px 24px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#2563eb;
+    color:white;
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.logout-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+/* ================= HOME ================= */
+
+.home{
+    min-height:90vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:40px;
+}
+
+.home h1{
+    font-size:58px;
+    color:#111827;
+    margin-bottom:20px;
+}
+
+.home p{
+    font-size:20px;
+    color:#6b7280;
+    max-width:700px;
+    line-height:1.8;
+}
+
+.home-img{
+    width:550px;
+    margin-top:40px;
+
+    border-radius:25px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* ================= LOGIN ================= */
+
+.login-container{
+    min-height:90vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#f4f7fb;
+}
+
+.login-form{
+    width:420px;
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:25px;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+
+    display:flex;
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.login-form h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.login-form label{
+    font-size:15px;
+    font-weight:600;
+    color:#374151;
+}
+
+.login-form input{
+    padding:15px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:0.3s;
+}
+
+.login-form input:focus{
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 4px rgba(37,99,235,0.1);
+}
+
+.login-form button{
+    margin-top:10px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+    color:white;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.login-form button:hover{
+    background:#1d4ed8;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products-page{
+    padding:50px 70px;
+}
+
+.products-heading{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:35px;
+}
+
+.search-input{
+    width:350px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:white;
+
+    outline:none;
+
+    box-shadow:0 2px 15px rgba(0,0,0,0.06);
+
+    font-size:15px;
+
+    margin-bottom:40px;
+}
+
+.products-container{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+    gap:30px;
+}
+
+.product-card{
+    background:white;
+
+    border-radius:22px;
+
+    padding:20px;
+
+    overflow:hidden;
+
+    transition:0.3s;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.06);
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 35px rgba(0,0,0,0.1);
+}
+
+.product-card img{
+    width:100%;
+    height:230px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+}
+
+.product-card h2{
+    font-size:22px;
+    margin-top:18px;
+    color:#111827;
+}
+
+.product-card p{
+    margin-top:10px;
+
+    font-size:24px;
+    font-weight:700;
+
+    color:#2563eb;
+}
+
+.details-btn{
+    width:100%;
+
+    margin-top:14px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#111827;
+    color:white;
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.details-btn:hover{
+    background:#2563eb;
+}
+.delete-btn{
+    width:100%;
+
+    margin-top:12px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ef4444;
+    color:white;
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
+
+/* ================= PRODUCT DETAILS ================= */
+
+.details-page{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:50px;
+}
+
+.details-card{
+    width:1000px;
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:40px;
+
+    display:flex;
+    gap:50px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.details-image-section{
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.details-img{
+    width:100%;
+    max-width:420px;
+    height:420px;
+
+    object-fit:cover;
+
+    border-radius:22px;
+}
+
+.details-content{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    gap:20px;
+}
+
+.details-content h1{
+    font-size:44px;
+}
+
+.details-price{
+    font-size:34px;
+    font-weight:700;
+
+    color:#2563eb;
+}
+
+.details-description{
+    line-height:1.8;
+    color:#6b7280;
+}
+
+.cart-btn{
+    width:220px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#111827;
+    color:white;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.cart-btn:hover{
+    background:#2563eb;
+    transform:scale(1.03);
+}
+
+/* ================= CART ================= */
+
+.cart-container{
+    min-height:80vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    text-align:center;
+}
+
+.cart-container h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.cart-container p{
+    color:#6b7280;
+    font-size:18px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .navbar{
+        padding:20px;
+        height:auto;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .home h1{
+        font-size:40px;
+    }
+
+    .home-img{
+        width:100%;
+    }
+
+    .products-page{
+        padding:20px;
+    }
+
+    .search-input{
+        width:100%;
+    }
+
+    .details-card{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .details-content{
+        text-align:center;
+        align-items:center;
+    }
+
+    .details-content h1{
+        font-size:34px;
+    }
+
+    .details-img{
+        height:300px;
+    }
+}
+
+.cart-page{
+    padding:50px;
+}
+
+.cart-page h1{
+    margin-bottom:40px;
+}
+
+.cart-card{
+    background:white;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    display:flex;
+    align-items:center;
+
+    gap:30px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.cart-card img{
+    width:180px;
+    height:180px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+}
+
+.cart-content{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.cart-content p{
+    color:#2563eb;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.quantity-section{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.quantity-section button{
+    width:40px;
+    height:40px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#111827;
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+.quantity-section span{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.total-price{
+    margin-top:40px;
+    font-size:35px;
+}
