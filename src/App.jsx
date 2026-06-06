@@ -12,7 +12,7 @@ import Login from './components/LogIn/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import './App.css';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 function App() {
     const itemDetails = [
@@ -22,9 +22,18 @@ function App() {
         { id: '4', name: 'Laptops', price: '55,000', img: 'https://picsum.photos/200/219' },
         { id: '5', name: 'Furniture', price: '1,24,000', img: 'https://picsum.photos/300/219' },
     ]
-    const [islogin, setsLogin] = useState(false);
+    const [islogin, setsLogin] = 
+    useState(localStorage.getItem("isLogin") === 'true');
 
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(()=>{
+        const storedData = localStorage.getItem('cartItems')
+
+        return storedData ? JSON.parse(storedData) : [];
+    });
+
+    useEffect(()=>{
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    })
 
     const addToCart = (product) => {
         const existingProducts = cartItems.find((items) =>

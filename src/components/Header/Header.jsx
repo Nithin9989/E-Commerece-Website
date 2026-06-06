@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { ProductContext } from '../Context/ProductContext';
 
 function Header(){
-    const {islogin, setsLogin} = useContext(ProductContext);
+    const {islogin, setsLogin, cartItems} = useContext(ProductContext);
+    const totalCount = cartItems.length;
 
     const navigate = useNavigate();
 
@@ -21,10 +22,13 @@ function Header(){
     
     return(
         <nav className="navbar">
-            <h1 className="logo">ShopLikeNever</h1>
+            <h1 className="logo">SkyMart </h1>
             <Link to='/' className='nav-links'>Home</Link>
             <Link to='/products' className='nav-links'>Products</Link>
-            <Link to='/cart' className='nav-links'>Cart</Link>
+            <Link to='/cart' className='nav-links'>
+            Cart
+            <span className='cart-count'>{totalCount}</span>
+            </Link>
             <Link to='/wishlist' className='nav-links'>WishList</Link>
             {islogin ?
             <button className='logout-btn' 

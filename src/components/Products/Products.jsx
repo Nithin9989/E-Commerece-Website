@@ -1,22 +1,35 @@
 import { Link } from 'react-router-dom';
-import { useContext , useState, useEffect} from 'react';
+import { useState} from 'react';
 
-import { ProductContext } from '../Context/ProductContext';
 import useFetch from '../useFetch';
 
-
 function Products() {
-    const {itemDetails} = useContext(ProductContext);
     const [search, Setsearch] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
 
-    const {products, addproducts, updateproducts,deleteProduct} = useFetch();
+    const {products, addproducts, updateproducts,deleteProduct, error} = useFetch();
 
     const filteredDetails = products.filter((eachItem)=>(
         eachItem.title.toLowerCase().includes(search.toLowerCase())
     ));
 
+    const itemsPerPage = 8;
+
+    const lastIndex = currentPage * itemsPerPage
+    console.log(lastIndex);
+    
+    const fristIndex = lastIndex - itemsPerPage;
+    console.log(fristIndex);
+
+    const currentDetails = filteredDetails.slice(fristIndex, lastIndex);
+
+    const totalPages = Math.ceil(filteredDetails.length/itemsPerPage );
+
     return (
         <>
+        {error && 
+        <p className='error'>Failed To Load Products...</p>
+        }
             <h1 style={{ textAlign: "center", margin: "20px" }}>Welcome To products Page</h1>
             <input type='text'
             value={search}
@@ -28,7 +41,7 @@ function Products() {
             <div className="products-container">
                 {filteredDetails.length === 0 ? <h2>No Products Here</h2> 
                 : 
-                filteredDetails.map((eachItem) => (
+                currentDetails.map((eachItem) => (
                     <div className="product-card" key={eachItem.id}>
                         <h2>{eachItem.title}</h2>
                         <p>{eachItem.price}</p>
@@ -46,6 +59,15 @@ function Products() {
                     </div>
                 ))
                 }
+            </div>
+            <div className='pagination'>
+                <button 
+                disabled = {currentPage === 1}
+                onClick={()=>setCurrentPage(currentPage -1)}>⬅️ Previous</button>
+                <span>Page {currentPage}</span>
+                <button
+                disabled = {currentPage === totalPages}
+                onClick={()=>setCurrentPage(currentPage + 1)}>Next ➡️</button>
             </div>
         </>
     )

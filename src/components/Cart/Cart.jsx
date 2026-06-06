@@ -6,7 +6,6 @@ function Cart() {
 
     const increaseQunatity = (id) => {
         const updatedCart = cartItems.map((eachItem) => {
-            eachItem.id === id
             if (eachItem.id === id) {
                 return {
                     ...eachItem, quantity: eachItem.quantity + 1
@@ -19,7 +18,6 @@ function Cart() {
     }
     const decreaseQunatity = (id) => {
         const updatedCart = cartItems.map((eachItem) => {
-            eachItem.id === id
             if (eachItem.id === id) {
                 return {
                     ...eachItem, quantity: eachItem.quantity > 1 ? eachItem.quantity - 1 : 1
@@ -45,12 +43,12 @@ function Cart() {
             {cartItems.length === 0
                 ?
                 <div className="empty-cart">
-                    <h2>Your Cart is Empty</h2>
-                    <p>Add Items To Cart</p>
+                    <h2>🛒 Your Cart is Empty</h2>
+                    <p>Add Products To Continue Shopping</p>
                 </div>
                 :
                 cartItems.map((eachItem) => (
-                    <div className="cart-card">
+                    <div className="cart-card" key={eachItem.id}>
                         <img src={eachItem.thumbnail} alt={eachItem.title} />
                         <div className="cart-content">
                             <h2>{eachItem.title}</h2>

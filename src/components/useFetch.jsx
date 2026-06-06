@@ -4,15 +4,21 @@ import axios from 'axios';
 
 function useFetch() {
     const [products, setProducts] = useState([]);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         const getProducts = async () => {
             try {
                 const response = await axios.get('https://dummyjson.com/products')
                 setProducts(response.data.products);
+                setLoading(false);
             }
             catch (err) {
                 console.log(err);
+                setError('Failed To Load products');
+                setLoading(false);
             }
         }
         getProducts();
@@ -30,6 +36,8 @@ function useFetch() {
         }
         catch (err) {
             console.log(err)
+            setError('Failed To Load products');
+            setLoading(false);
         }
         
     }
@@ -43,7 +51,9 @@ function useFetch() {
     ))
         }
         catch(err){
-            console.log(err)
+            console.log(err);
+            setError('Failed To Load products');
+            setLoading(false);
         }
     }
     const deleteProduct = async(id) =>{
@@ -56,6 +66,6 @@ function useFetch() {
         setProducts(filteredProducts);
         }
     }
-    return { products, addproducts, updateproducts, deleteProduct }
+    return { products, addproducts, updateproducts, deleteProduct , error}
 }
 export default useFetch
